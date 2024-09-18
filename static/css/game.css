@@ -6,7 +6,6 @@
 	transform: translateX(-50%);
 	border-radius: 12px;
 	background-color: var(--background-tertiary);
-	min-height: 500px;
 	height: auto;
 }
 
@@ -42,6 +41,7 @@
 	left: 16px;
 	top: 56px;
 	font-size: 16px;
+	margin-bottom: 114px;
 	font-family: 'Cascadia Code', monospace;
 	text-align: left;
 	white-space: wrap;
