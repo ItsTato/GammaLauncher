@@ -66,6 +66,24 @@ class Controller:
 			raw_location[3]
 		)
 		return location
+	
+	def getAllLocations(self) -> list[Location]:
+		cursor = self.__connection.cursor()
+		cursor.execute("SELECT * FROM Locations")
+		raw_locations:list[tuple[int,str,str,int]] = cursor.fetchall()
+		if raw_locations is None:
+			return []
+		locations:list[Location] = []
+		for raw_location in raw_locations:
+			location:Location = Location(
+				raw_location[0],
+				raw_location[1],
+				raw_location[2],
+				raw_location[3]
+			)
+			locations.append(location)
+		return locations
+
 
 	def getImage(self,image_id:int) -> Image|None:
 		cursor = self.__connection.cursor()
@@ -137,12 +155,12 @@ class Controller:
 			games.append(game)
 		return games
 	
-	#def newGame(self,game:Game) -> Game:
-	#	cursor = self.__connection.cursor()
-	#	cursor.execute(f"""
-	#	INSERT INTO Games ()
-	#	Values ()
-	#	""")
+	def newGame(self,game:Game) -> Game:
+		cursor = self.__connection.cursor()
+		cursor.execute(f"""
+		INSERT INTO Games ()
+		Values ()
+		""")
 
 if __name__ == "__main__":
 	while True:

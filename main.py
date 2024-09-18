@@ -1,9 +1,10 @@
 import flask
-from os import path
+from os import path, startfile
 from json import load, dumps
 import subprocess
 from time import sleep
 from threading import Thread
+import platform
 
 from gammadb import Controller
 from gammadb.Objects import Game, Image, Location
@@ -24,6 +25,29 @@ gameTracking:dict[int,subprocess.Popen] = {}
 @site.route("/",methods=["GET"])
 def index():
 	return flask.render_template("index.html",version=version,username=config["User"]["Username"])
+
+@site.route("/locations",methods=["GET"])
+def locations():
+	return flask.render_template("locations.html",username=config["User"]["Username"])
+
+@site.route("/locations/<location_id>/reveal",methods=["POST"])
+def reveal_location(location_id:int):
+	location:Location|None = database.getLocation(location_id)
+	if location is None:
+		return flask.make_response("Invalid location id! Please check your database!",404)
+	if platform.system() == "Windows":
+		startfile(location.Path)
+	elif platform.system() == "Darwin":
+		subprocess.run(args=["open",location.Path])
+	elif platform.system() == "Linux":
+		subprocess.run(args=["xdg-open",location.Path])
+	else:
+		raise OSError("Unsupported operating system")
+	return flask.make_response("Revealed",200)
+
+@site.route("/images",methods=["GET"])
+def images():
+	return flask.render_template("images.html",username=config["User"]["Username"])
 
 @site.route("/images/<image_id>",methods=["GET"])
 def get_image(image_id:int):
@@ -63,6 +87,19 @@ def list_games():
 			}
 		})
 	return flask.make_response(dumps(gamesList),200)
+
+@site.route("/api/locations",methods=["GET"])
+def list_locations():
+	locations:list[Location] = database.getAllLocations()
+	locationsList:list[dict[str,str|int]] = []
+	for location in locations:
+		locationsList.append({
+			"ID": location.ID,#type:ignore
+			"Name": location.Name,
+			"Path": location.Path,
+			"GameAmount": location.GameAmount
+		})
+	return flask.make_response(dumps(locationsList),200)
 
 @site.route("/games",methods=["GET"])
 def games():

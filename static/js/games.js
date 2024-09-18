@@ -21,7 +21,7 @@ fetch("/api/games", {
 		gameElement.querySelector("#game-name").innerText = game.Name;
 		gameElement.querySelector("#game-description-short").innerText = game.ShortDescription;
 		gameElement.querySelector("#game-more").onclick = () => {
-			document.location.href = document.location.href + "/" + game.ID
+			document.location.href = document.location.href + "/" + game.ID;
 		};
 		gameElement.setAttribute("style",`margin-top: ${120*(game.ID-1)}px;`);
 		Body.appendChild(gameElement);
