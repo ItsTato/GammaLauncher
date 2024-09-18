@@ -13,10 +13,10 @@ The all-in-one game launcher perfect for managing your huge libraries of video g
 - [ ] Adding Game
 - [x] Launching Game
 - [ ] Removing Game
+- [x] Location List
 - [ ] Add Location
 - [ ] Remove Location
-- [ ] Add Thumbnail
-- [ ] Add Banner
-- [ ] Edit Thumbnail
-- [ ] Edit Banner
-- [ ] Remove Banner
+- [ ] Image List
+- [ ] Add Image
+- [ ] Edit Image
+- [ ] Remove Image
