@@ -1,8 +1,14 @@
 :root {
 	--background-primary: #0e0e0e;
 	--background-secondary: #2e2e2e;
+	--background-tertiary: #1b1b1b;
 
 	--text-primary: #ffffff;
+	--text-secondary: #000000;
+	--text-tertiary: #a0a0a0;
+
+	--button-primary: #68ff81;
+	--button-secondary: #ff3535;
 }
 
 .topbar {
@@ -12,21 +18,22 @@
 
 .topbar-icon {
 	background-color: var(--background-secondary);
-	padding: 6px 6px 6px 6px;
-	border-radius: 12%;
+	padding: 6px;
+	border-radius: 6px;
 	margin-right: 8px;
 }
 
 .topbar-icon:hover {
 	cursor: pointer;
+	background-color: var(--background-tertiary);
 }
 
 .topbar-games {
 	background-color: var(--background-secondary);
 	width: 128px;
 	height: 48px;
-	padding: 6px 6px 6px 6px;
-	border-radius: 4%;
+	padding: 6px;
+	border-radius: 6px;
 	margin-right: 8px;
 	color: var(--text-primary);
 	font-size: 40px;
@@ -36,4 +43,40 @@
 
 .topbar-games:hover {
 	cursor: pointer;
+	background-color: var(--background-tertiary);
+}
+
+.topbar-profile {
+	display: flex;
+	align-items: flex-start;
+	background-color: var(--background-secondary);
+	min-width: 128px;
+	height: 48px;
+	padding-top: 0px;
+	padding-bottom: 12px;
+	border-radius: 6px;
+	margin-left: auto;
+	color: var(--text-primary);
+	font-size: 36px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: left;
+}
+
+.topbar-profile:hover {
+	background-color: var(--background-tertiary);
+}
+
+.topbar-profile-picture {
+	border-radius: 50%;
+	padding-top: 6px;
+	margin-left: 10px;
+	margin-right: 6px;
+}
+
+.topbar-profile-username {
+	margin-right: 10px;
+	margin-top: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: inherit;
 }

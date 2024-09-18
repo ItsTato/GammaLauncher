@@ -53,6 +53,20 @@ class Controller:
 	def Close(self) -> None:
 		self.__connection.close()
 	
+	def getLocation(self,location_id:int) -> Location|None:
+		cursor = self.__connection.cursor()
+		cursor.execute("SELECT * FROM Locations WHERE ID = ?",(location_id,))
+		raw_location:tuple[int,str,str,int]|None = cursor.fetchone()
+		if raw_location is None:
+			return
+		location:Location = Location(
+			raw_location[0],
+			raw_location[1],
+			raw_location[2],
+			raw_location[3]
+		)
+		return location
+
 	def getImage(self,image_id:int) -> Image|None:
 		cursor = self.__connection.cursor()
 		cursor.execute("SELECT * FROM Images WHERE ID = ?",(image_id,))

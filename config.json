@@ -5,5 +5,8 @@
 		"Revision": 0,
 		"Channel": "alpha"
 	},
-	"Profile Picture": "pfp.jpg"
+	"User": {
+		"Username": "ItsTato",
+		"Profile Picture": "pfp.jpg"
+	}
 }

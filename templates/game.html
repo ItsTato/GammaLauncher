@@ -16,6 +16,19 @@
 		<div class="topbar">
 			<img id="home-button" src="/static/favicon.ico" class="topbar-icon" width="48" height="48">
 			<div id="games-button" class="topbar-games">Games</div>
+			<div class="topbar-profile">
+				<img src="/images/profile_picture" class="topbar-profile-picture" width="48" height="48">
+				<p class="topbar-profile-username">{{username}}</p>
+			</div>
+		</div>
+
+		<div class="game">
+			<img src="/images/{{game.BannerID}}" onerror="this.onerror=null; this.src='/static/no_banner.png';" class="game-banner" width="512" height="128">
+			<img src="/images/{{game.ThumbnailID}}" class="game-icon" width="64" height="64">
+			<p class="game-version">{{game.VersionMajor}}.{{game.VersionMinor}}.{{game.VersionRevision}}</p>
+			<p class="game-name">{{game.Name}}</p>
+			<p class="game-description-long">{{game.LongDescription}}</p>
+			<div id="launch-game" class="game-launch">Launch</div>
 		</div>
 
 		<script src="/static/js/all.js"></script>

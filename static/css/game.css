@@ -1,3 +1,99 @@
 .body {
 	background-color: var(--background-primary);
 }
+
+.game {
+	position: absolute;
+	top: 128px;
+	left: 50%;
+	width: 512px;
+	transform: translateX(-50%);
+	border-radius: 12px;
+	background-color: var(--background-tertiary);
+	min-height: 500px;
+	height: auto;
+}
+
+.game-banner {
+	position: relative;
+	background-color: var(--background-secondary);
+	border-radius: 12px 12px 0 0;
+	object-fit: cover;
+	object-position: bottom;
+}
+
+.game-icon {
+	position: absolute;
+	left: 32px;
+	top: 96px;
+	padding: 2px;
+	background-color: var(--background-primary);
+	border-radius: 12px;
+}
+
+.game-name {
+	position: absolute;
+	left: 128px;
+	font-size: 32px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-primary);
+}
+
+.game-description-long {
+	position: relative;
+	max-width: 492px;
+	left: 16px;
+	top: 56px;
+	font-size: 16px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: left;
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--text-primary);
+}
+
+.game-version {
+	position: absolute;
+	top: 156px;
+	left: 42px;
+	font-size: 16px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-tertiary);
+}
+
+.game-launch {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	min-width: 492px;
+	font-size: 32px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-secondary);
+	background-color: var(--button-primary);
+	border-radius: 6px;
+}
+
+.game-launch:hover {
+	cursor: pointer;
+}
+
+.game-launch-kill {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	min-width: 492px;
+	font-size: 32px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-secondary);
+	background-color: var(--button-secondary);
+	border-radius: 6px;
+}
+
+.game-launch-kill:hover {
+	cursor: pointer;
+}
