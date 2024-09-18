@@ -9,7 +9,7 @@ with open("./config.json","r") as file:
 	config:dict = load(file)
 
 version:str = f"{config['Version']['Major']}.{config['Version']['Minor']}.{config['Version']['Revision']}{'a' if config['Version']['Channel'] == 'alpha' else 'b' if config['Version']['Channel'] == 'beta' else '' if config['Version']['Channel'] == 'release' else 'u'}"
-print(version)
+print(f"GammaLauncher {version}")
 
 database:Controller = Controller("./data/GammaData.db3")
 
