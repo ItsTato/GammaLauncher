@@ -1,0 +1,7 @@
+*.db3
+data/images/1.png
+data/images/pfp.jpg
+desktop.ini
+.venv
+.vscode
+*__pycache__
