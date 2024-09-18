@@ -19,13 +19,11 @@ database:Controller = Controller("./data/GammaData.db3")
 flask_path:str = path.join("./","flask")
 site:flask.Flask = flask.Flask(__name__)
 
-gameTracking:dict[int,subprocess.Popen] = {
-	#1: process
-}
+gameTracking:dict[int,subprocess.Popen] = {}
 
 @site.route("/",methods=["GET"])
 def index():
-	return "Hello, world!"
+	return flask.render_template("index.html",version=version,username=config["User"]["Username"])
 
 @site.route("/images/<image_id>",methods=["GET"])
 def get_image(image_id:int):

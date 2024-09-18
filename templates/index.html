@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/css/all.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="shortcut icon" href="/static/favicon.ico">
+	<title>Gamma Launcher</title>
+	<link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="body">
+
+	<div class="topbar">
+		<img id="home-button" src="/static/favicon.ico" class="topbar-icon" width="48" height="48">
+		<div id="games-button" class="topbar-games">Games</div>
+		<div class="topbar-profile">
+			<img src="/images/profile_picture" class="topbar-profile-picture" width="48" height="48">
+			<p class="topbar-profile-username">{{username}}</p>
+		</div>
+	</div>
+
+	<div class="pkg">
+		<img id="pkg-icon" src="/static/logo2.png" class="pkg-icon" width="64" height="64">
+		<p id="pkg-version" class="pkg-version">v{{version}}</p>
+		<p id="pkg-name" class="pkg-name">GammaLauncher</p>
+		<p id="pkg-description-short" class="pkg-description-short">GammaLauncher is the best game & app launcher.</p>
+		<img id="pkg-more" src="/static/link.png" class="pkg-more" width="48" height="48">
+	</div>
+
+	<script src="/static/js/all.js"></script>
+	<script src="/static/js/index.js"></script>
+
+</body>
+
+</html>
