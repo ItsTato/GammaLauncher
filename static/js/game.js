@@ -1,4 +1,4 @@
-var homeButton = document.getElementById("launch-game");
+var launchButton = document.getElementById("launch-game");
 
 fetch(document.location.href + "/status", {
 	method: "GET"
@@ -10,17 +10,17 @@ fetch(document.location.href + "/status", {
 	};
 }).then(data => {
 	if (data["Running"] == true) {
-		homeButton.innerText = "Kill";
-		homeButton.className = "game-launch-kill";
+		launchButton.innerText = "Kill";
+		launchButton.className = "game-launch-kill";
 	};
 }).catch(error => {
 	console.error("Failed getting status!");
 });
 
-homeButton.addEventListener("click", (e) => {
-	if (homeButton.className == "game-launch-kill") {
-		homeButton.innerText = "Launch";
-		homeButton.className = "game-launch";
+launchButton.addEventListener("click", (e) => {
+	if (launchButton.className == "game-launch-kill") {
+		launchButton.innerText = "Launch";
+		launchButton.className = "game-launch";
 		fetch(document.location.href + "/kill", {
 			method: "POST"
 		}).then(res => {
@@ -30,8 +30,8 @@ homeButton.addEventListener("click", (e) => {
 			console.log("Game killed!");
 		});
 	} else {
-		homeButton.innerText = "Kill";
-		homeButton.className = "game-launch-kill";
+		launchButton.innerText = "Kill";
+		launchButton.className = "game-launch-kill";
 		fetch(document.location.href + "/launch", {
 			method: "POST"
 		}).then(res => {
