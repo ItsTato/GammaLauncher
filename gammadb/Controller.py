@@ -107,12 +107,42 @@ class Controller:
 		)
 		return game
 	
-	def newGame(self,game:Game) -> Game:
+	def getAllGames(self) -> list[Game]:
 		cursor = self.__connection.cursor()
-		cursor.execute(f"""
-		INSERT INTO Games ()
-		Values ()
-		""")
+		cursor.execute("SELECT * FROM Games")
+		raw_games:list[tuple[int,str,int,int|None,str,str,int,str,int,str,str,str,int,int,int,int,int]] = cursor.fetchall()
+		if raw_games is None:
+			return []
+		games:list[Game] = []
+		for raw_game in raw_games:
+			game:Game = Game(
+				raw_game[0],
+				raw_game[1],
+				raw_game[2],
+				raw_game[3],
+				raw_game[4],
+				raw_game[5],
+				raw_game[6],
+				raw_game[7],
+				raw_game[8],
+				raw_game[9],
+				raw_game[10],
+				raw_game[11],
+				raw_game[12],
+				raw_game[13],
+				raw_game[14],
+				raw_game[15],
+				raw_game[16]
+			)
+			games.append(game)
+		return games
+	
+	#def newGame(self,game:Game) -> Game:
+	#	cursor = self.__connection.cursor()
+	#	cursor.execute(f"""
+	#	INSERT INTO Games ()
+	#	Values ()
+	#	""")
 
 if __name__ == "__main__":
 	while True:

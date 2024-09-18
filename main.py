@@ -38,9 +38,37 @@ def get_image(image_id:int):
 def get_profile_picture():
 	return flask.send_file(f"data/images/{config['User']['Profile Picture']}")
 
+@site.route("/api/games",methods=["GET"])
+def list_games():
+	games:list[Game] = database.getAllGames()
+	gamesList:list[dict[str,str|int|None|dict[str,int]]] = []
+	for game in games:
+		gamesList.append({
+			"ID": game.ID,
+			"Name": game.Name,
+			"ThumbnailID": game.ThumbnailID,
+			"BannerID": game.BannerID,
+			"ShortDescription": game.ShortDescription,
+			"LongDescription": game.LongDescription,
+			"LocationID": game.LocationID,
+			"ParentDirectory": game.ParentDirectory,
+			"LaunchType": game.LaunchType,
+			"GameLaunchFile": game.GameLaunchFile,
+			"LaunchArguments": game.LaunchArguments,
+			"LastPlayed": game.LastPlayed,
+			"MinutesOnRecord": game.MinutesOnRecord,
+			"GameType": game.GameType,
+			"Version": {
+				"Major": game.VersionMajor,
+				"Minor": game.VersionMinor,
+				"Revision": game.VersionRevision
+			}
+		})
+	return flask.make_response(dumps(gamesList),200)
+
 @site.route("/games",methods=["GET"])
 def games():
-	return "Games list here.."
+	return flask.render_template("games.html",username=config["User"]["Username"])
 
 @site.route("/games/<game_id>",methods=["GET"])
 def view_game(game_id:int):

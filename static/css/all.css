@@ -11,6 +11,10 @@
 	--button-secondary: #ff3535;
 }
 
+.body {
+	background-color: var(--background-primary);
+}
+
 .topbar {
 	display: flex;
 	align-items: center;

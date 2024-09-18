@@ -1,0 +1,72 @@
+.invisible {
+	display: none;
+}
+
+.game {
+	position: absolute;
+	top: 128px;
+	left: 50%;
+	width: 512px;
+	transform: translateX(-50%);
+	border-radius: 12px;
+	background-color: var(--background-tertiary);
+	height: 100px;
+}
+
+.game-icon {
+	position: absolute;
+	left: 16px;
+	top: 16px;
+	padding: 2px;
+	background-color: var(--background-primary);
+	border-radius: 12px;
+}
+
+.game-name {
+	position: absolute;
+	top: -20px;
+	left: 96px;
+	font-size: 32px;
+	max-width: 340px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-primary);
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.game-description-short {
+	position: relative;
+	left: 96px;
+	top: 30px;
+	max-width: 340px;
+	max-height: 38px;
+	font-size: 16px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: left;
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--text-primary);
+}
+
+.game-version {
+	position: absolute;
+	top: 0px;
+	right: 16px;
+	font-size: 16px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-tertiary);
+}
+
+.game-more {
+	position: absolute;
+	top: 42px;
+	right: 12px;
+}
+
+.game-more:hover {
+	cursor: pointer;
+}

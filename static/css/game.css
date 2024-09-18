@@ -1,7 +1,3 @@
-.body {
-	background-color: var(--background-primary);
-}
-
 .game {
 	position: absolute;
 	top: 128px;
