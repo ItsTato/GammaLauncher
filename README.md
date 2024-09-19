@@ -1,14 +1,12 @@
 # Gamma Launcher
-The all-in-one game launcher perfect for managing your huge libraries of video games & applications (if you want to!).
+The all-in-one game launcher perfect for managing your huge libraries of video games (& applications if you want to!).
 
 <div align="center">
 	<img src="GammaShowcase.png" alt="Showcase picture" height="512">
 </div>
 
 ## Changelog
-### 1.0.0
-> [!NOTE]
-> Most features are missing. Add Locations and Images manually via the database. Location is a path. Game is where you add a game or path. Image is just an ID. Place the image named {id}.{extension} in data/images. After this, add the record. Image extension must be filled properly.
+### 1.1.0
 
 ## Progress
 ### Index
@@ -16,20 +14,21 @@ The all-in-one game launcher perfect for managing your huge libraries of video g
 
 ### Games (/Apps)
 - [x] Game List
-- [x] Launching Game
+- [ ] Add Game
+- [ ] Edit Game
 - [x] Viewing Game
-- [ ] Adding Game
+- [x] Launching Game
+- [ ] Removing Game
 
 ### Locations
-- [ ] Edit Location
-- [ ] Removing Game
 - [x] Location List
-- [ ] Add Location
+- [x] Add Location
 - [ ] Edit Location
+- [x] Reveal Location
 - [x] Remove Location
 
 ### Images
-- [ ] Image List
-- [ ] Add Image
-- [ ] Edit Image
+- [x] Image List
+- [x] Add Image
+- [x] Get Image
 - [ ] Remove Image
