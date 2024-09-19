@@ -67,6 +67,12 @@ class Controller:
 		)
 		return location
 	
+	def deleteLocation(self,location_id:int) -> None:
+		cursor = self.__connection.cursor()
+		cursor.execute("DELETE FROM Locations WHERE ID = ?",(location_id,))
+		self.__connection.commit()
+		return
+	
 	def getAllLocations(self) -> list[Location]:
 		cursor = self.__connection.cursor()
 		cursor.execute("SELECT * FROM Locations")
@@ -83,7 +89,6 @@ class Controller:
 			)
 			locations.append(location)
 		return locations
-
 
 	def getImage(self,image_id:int) -> Image|None:
 		cursor = self.__connection.cursor()

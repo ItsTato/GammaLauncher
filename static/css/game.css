@@ -28,6 +28,7 @@
 
 .game-name {
 	position: absolute;
+	top: 126px;
 	left: 128px;
 	font-size: 32px;
 	font-family: 'Cascadia Code', monospace;
@@ -52,7 +53,7 @@
 
 .game-version {
 	position: absolute;
-	top: 128px;
+	top: 124px;
 	left: 128px;
 	font-size: 16px;
 	font-family: 'Cascadia Code', monospace;

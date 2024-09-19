@@ -30,6 +30,21 @@ def index():
 def locations():
 	return flask.render_template("locations.html",username=config["User"]["Username"])
 
+@site.route("/locations/<location_id>",methods=["GET"])
+def view_location(location_id:int):
+	location:Location|None = database.getLocation(location_id)
+	if location is None:
+		return "Invalid location id!"
+	return flask.render_template("location.html",location=location,username=config["User"]["Username"])
+
+@site.route("/locations/<location_id>",methods=["DELETE"])
+def delete_location(location_id:int):
+	location:Location|None = database.getLocation(location_id)
+	if location is None:
+		return "Invalid location id!"
+	database.deleteLocation(location_id)
+	return flask.make_response("Deleted",200)
+
 @site.route("/locations/<location_id>/reveal",methods=["POST"])
 def reveal_location(location_id:int):
 	location:Location|None = database.getLocation(location_id)

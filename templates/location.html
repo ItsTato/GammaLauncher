@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/css/all.css">
-	<link rel="stylesheet" href="/static/css/locations.css">
+	<link rel="stylesheet" href="/static/css/location.css">
 	<link rel="shortcut icon" href="/static/favicon.ico">
-	<title>GL | Locations</title>
+	<title>GL | {{location.Name}}</title>
 	<link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -24,17 +24,17 @@
 		</div>
 	</div>
 
-	<p class="page-title">Locations</p>
+	<p class="page-title">Viewing: {{location.Name}}</p>
 
 	<div class="location" id="base-location-template">
-		<p id="location-name" class="location-name">GammaLauncher</p>
-		<p id="location-path" class="location-path">GammaLauncher is the best and only launcher.</p>
-		<img id="location-more" src="/static/link.png" class="location-more" width="36" height="36">
+		<p id="location-name" class="location-name">{{location.Name}}</p>
+		<p id="location-path" class="location-path">{{location.Path}}</p>
+		<img id="location-delete" src="/static/delete.png" class="location-delete" width="36" height="36">
 		<img id="location-reveal" src="/static/folder.png" class="location-reveal" width="36" height="36">
 	</div>
 
 	<script src="/static/js/all.js"></script>
-	<script src="/static/js/locations.js"></script>
+	<script src="/static/js/location.js"></script>
 
 </body>
 

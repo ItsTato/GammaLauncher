@@ -120,3 +120,13 @@
 	text-overflow: ellipsis;
 	white-space: inherit;
 }
+
+.page-title {
+	color: var(--text-primary);
+	position: absolute;
+	top: 48px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 36px;
+	font-family: 'Cascadia Code', monospace;
+}
