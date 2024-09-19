@@ -2,7 +2,7 @@
 The all-in-one game launcher perfect for managing your huge libraries of video games & applications (if you want to!).
 
 <div align="center">
-	<img src="GammaShowcase.png" alt="Showcase picture" height="256">
+	<img src="GammaShowcase.png" alt="Showcase picture" height="512">
 </div>
 
 ## Changelog
