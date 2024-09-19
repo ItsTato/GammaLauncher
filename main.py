@@ -45,7 +45,7 @@ def delete_location(location_id:int):
 	database.deleteLocation(location_id)
 	return flask.make_response("Deleted",200)
 
-@site.route("/locations/<location_id>/reveal",methods=["POST"])
+@site.route("/locations/<location_id>",methods=["POST"])
 def reveal_location(location_id:int):
 	location:Location|None = database.getLocation(location_id)
 	if location is None:

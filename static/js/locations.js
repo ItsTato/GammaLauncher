@@ -22,13 +22,13 @@ fetch("/api/locations", {
 			document.location.href = document.location.href + "/" + location.ID;
 		};
 		locationElement.querySelector("#location-reveal").onclick = () => {
-			fetch(document.location.href + "/" + location.ID + "/reveal", {
+			fetch(document.location.href + "/" + location.ID, {
 				method: "POST"
 			}).then(res => {
 				if (res.status == 404) {
 					console.error("INVALID ID ERROR! HOW?");
 				}
-				console.log("Reavled!");
+				console.log("Revealed!");
 			});
 		}
 		locationElement.setAttribute("style", `margin-top: ${120 * (location.ID - 1)}px;`);
