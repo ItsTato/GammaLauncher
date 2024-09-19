@@ -1,0 +1,53 @@
+.location-form {
+	position: absolute;
+	top: 128px;
+	left: 50%;
+	width: 512px;
+	transform: translateX(-50%);
+	border-radius: 12px;
+	background-color: var(--background-tertiary);
+	height: 100px;
+}
+
+.location-title {
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	font-size: 32px;
+	max-width: 424px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-primary);
+	background-color: var(--background-primary);
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	border: none;
+}
+
+.location-path {
+	position: relative;
+	left: 12px;
+	top: 60px;
+	width: 424px;
+	height: 22px;
+	font-size: 20px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: left;
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--text-tertiary);
+	background-color: var(--background-primary);
+	border: none;
+}
+
+.location-create {
+	position: absolute;
+	top: 42px;
+	right: 12px;
+}
+
+.location-create:hover {
+	cursor: pointer;
+}

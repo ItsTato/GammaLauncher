@@ -1,6 +1,7 @@
 from .Objects import Location, Image, Game
 
 import sqlite3
+from os import remove
 
 class Controller:
 	def __init__(self,location:str) -> None:
@@ -34,7 +35,6 @@ class Controller:
 		cursor.execute("""
 		CREATE TABLE IF NOT EXISTS "Images" (
 			"ID"	INTEGER NOT NULL UNIQUE,
-			"ImageType"	INTEGER NOT NULL DEFAULT 1,
 			"FileExtension"	TEXT NOT NULL DEFAULT 'png',
 			PRIMARY KEY("ID")
 		);
@@ -44,7 +44,6 @@ class Controller:
 			"ID"	INTEGER NOT NULL UNIQUE,
 			"Name"	TEXT,
 			"Path"	TEXT NOT NULL UNIQUE,
-			"GameAmount"	INTEGER NOT NULL DEFAULT 0,
 			PRIMARY KEY("ID" AUTOINCREMENT)
 		);
 		""")
@@ -62,8 +61,7 @@ class Controller:
 		location:Location = Location(
 			raw_location[0],
 			raw_location[1],
-			raw_location[2],
-			raw_location[3]
+			raw_location[2]
 		)
 		return location
 	
@@ -73,6 +71,12 @@ class Controller:
 		self.__connection.commit()
 		return
 	
+	def newLocation(self,name:str,path:str) -> Location:
+		cursor = self.__connection.cursor()
+		cursor.execute("INSERT INTO Locations (Name,Path) Values(?,?)",(name,path))
+		self.__connection.commit()
+		return self.getLocation(cursor.lastrowid)#type:ignore
+
 	def getAllLocations(self) -> list[Location]:
 		cursor = self.__connection.cursor()
 		cursor.execute("SELECT * FROM Locations")
@@ -84,8 +88,7 @@ class Controller:
 			location:Location = Location(
 				raw_location[0],
 				raw_location[1],
-				raw_location[2],
-				raw_location[3]
+				raw_location[2]
 			)
 			locations.append(location)
 		return locations
@@ -93,15 +96,45 @@ class Controller:
 	def getImage(self,image_id:int) -> Image|None:
 		cursor = self.__connection.cursor()
 		cursor.execute("SELECT * FROM Images WHERE ID = ?",(image_id,))
-		raw_image:tuple[int,int,str]|None = cursor.fetchone()
+		raw_image:tuple[int,str]|None = cursor.fetchone()
 		if raw_image is None:
 			return
 		image:Image = Image(
 			raw_image[0],
-			raw_image[1],
-			raw_image[2]
+			raw_image[1]
 		)
 		return image
+	
+	def deleteImage(self,image_id:int) -> None:
+		image:Image|None = self.getImage(image_id)
+		if image is None:
+			raise Exception("Image doesn't exist!")
+		cursor = self.__connection.cursor()
+		cursor.execute("DELETE FROM Images WHERE ID = ?",(image_id,))
+		self.__connection.commit()
+		remove(f"./data/images/{image.ID}.{image.FileExtension}")
+		return
+	
+	def getAllImages(self) -> list[Image]:
+		cursor = self.__connection.cursor()
+		cursor.execute("SELECT * FROM Images")
+		raw_images:list[tuple[int,str]] = cursor.fetchall()
+		if raw_images is None:
+			return []
+		images:list[Image] = []
+		for raw_image in raw_images:
+			image:Image = Image(
+				raw_image[0],
+				raw_image[1]
+			)
+			images.append(image)
+		return images
+
+	def newImage(self,file_extension:str) -> Image:
+		cursor = self.__connection.cursor()
+		cursor.execute("INSERT INTO Images (FileExtension) Values(?)",(file_extension,))
+		self.__connection.commit()
+		return self.getImage(cursor.lastrowid)#type:ignore
 
 	def getGame(self,game_id:int) -> Game|None:
 		cursor = self.__connection.cursor()
@@ -160,12 +193,15 @@ class Controller:
 			games.append(game)
 		return games
 	
-	def newGame(self,game:Game) -> Game:
+	def newGame(self,name:str,thumbnail_id:int,location_id:int,parent_directory:str,launch_type:int,game_launch_file:str,game_type:int,version_major:int,version_minor:int,version_revision:int) -> Game:
 		cursor = self.__connection.cursor()
 		cursor.execute(f"""
-		INSERT INTO Games ()
-		Values ()
-		""")
+		INSERT INTO Games (Name,ThumbnailID,GameLocationID,ParentDirectory,LaunchType,GameLaunchFile,GameType,VersionMajor,VersionMinor,VersionRevision)
+		Values (?,?,?,?,?,?,?,?,?,?)
+		""",
+		(name,thumbnail_id,location_id,parent_directory,launch_type,game_launch_file,game_type,version_major,version_minor,version_revision))
+		self.__connection.commit()
+		return self.getGame(cursor.lastrowid)#type:ignore
 
 if __name__ == "__main__":
 	while True:

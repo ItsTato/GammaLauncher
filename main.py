@@ -26,6 +26,37 @@ gameTracking:dict[int,subprocess.Popen] = {}
 def index():
 	return flask.render_template("index.html",version=version,username=config["User"]["Username"])
 
+@site.route("/new",methods=["GET"])
+def new():
+	return flask.render_template("new_selector.html",username=config["User"]["Username"])
+
+@site.route("/new/location",methods=["GET","POST"])
+def new_location():
+	if flask.request.method.upper() == "GET":
+		return flask.render_template("new_location.html",username=config["User"]["Username"])
+	if flask.request.method.upper() == "POST":
+		database.newLocation(
+			flask.request.form.get("Name"),#type:ignore
+			flask.request.form.get("Path")#type:ignore
+		)
+		return flask.make_response("Created",200)
+	return flask.make_response("...?",404)
+
+@site.route("/new/image",methods=["GET","POST"])
+def new_image():
+	if flask.request.method.upper() == "GET":
+		return flask.render_template("new_image.html",username=config["User"]["Username"])
+	if flask.request.method.upper() == "POST":
+		image_file = flask.request.files["File"]
+		filename:str = image_file.filename#type:ignore
+		_, extension = path.splitext(filename)
+		image:Image = database.newImage(
+			extension.strip(".")
+		)
+		image_file.save(f"./data/images/{image.ID}.{image.FileExtension}")
+		return flask.make_response("Created",200)
+	return flask.make_response("...?",404)
+
 @site.route("/locations",methods=["GET"])
 def locations():
 	return flask.render_template("locations.html",username=config["User"]["Username"])
@@ -111,10 +142,20 @@ def list_locations():
 		locationsList.append({
 			"ID": location.ID,#type:ignore
 			"Name": location.Name,
-			"Path": location.Path,
-			"GameAmount": location.GameAmount
+			"Path": location.Path
 		})
 	return flask.make_response(dumps(locationsList),200)
+
+@site.route("/api/images",methods=["GET"])
+def list_images():
+	images:list[Image] = database.getAllImages()
+	imagesList:list[dict[str,int|str]] = []
+	for image in images:
+		imagesList.append({
+			"ID": image.ID,#type:ignore
+			"FileExtension": image.FileExtension
+		})
+	return flask.make_response(dumps(imagesList),200)
 
 @site.route("/games",methods=["GET"])
 def games():

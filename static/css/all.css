@@ -17,7 +17,9 @@
 
 .topbar {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
+	width: 100%;
 }
 
 .topbar-icon {
@@ -86,6 +88,20 @@
 	background-color: var(--background-tertiary);
 }
 
+.topbar-add {
+	background-color: var(--background-secondary);
+	width: 48px;
+	height: 48px;
+	padding: 6px;
+	border-radius: 6px;
+	margin-left: 6px;
+	color: var(--text-primary);
+}
+
+.topbar-add:hover {
+	cursor: pointer;
+}
+
 .topbar-profile {
 	display: flex;
 	align-items: flex-start;
@@ -100,10 +116,6 @@
 	font-size: 36px;
 	font-family: 'Cascadia Code', monospace;
 	text-align: left;
-}
-
-.topbar-profile:hover {
-	background-color: var(--background-tertiary);
 }
 
 .topbar-profile-picture {

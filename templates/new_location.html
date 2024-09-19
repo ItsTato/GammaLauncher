@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/css/all.css">
-	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="stylesheet" href="/static/css/new_location.css">
 	<link rel="shortcut icon" href="/static/favicon.ico">
-	<title>Gamma Launcher</title>
+	<title>GL | Creating a new location</title>
 	<link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -25,18 +25,18 @@
 		<img id="new-button" src="/static/add-secondary.png" class="topbar-add" width="48" height="48">
 	</div>
 
-	<p class="page-title">Gamma Launcher</p>
+	<p class="page-title">Create a new location</p>
 
-	<div class="pkg">
-		<img id="pkg-icon" src="/static/logo2.png" class="pkg-icon" width="64" height="64">
-		<p id="pkg-version" class="pkg-version">v{{version}}</p>
-		<p id="pkg-name" class="pkg-name">Gamma Launcher</p>
-		<p id="pkg-description-short" class="pkg-description-short">Gamma Launcher is the best game and app (if you want to) launcher.</p>
-		<img id="pkg-more" src="/static/link.png" class="pkg-more" width="48" height="48">
-	</div>
+	<form id="location-form" class="location-form">
+		<input type="text" id="location-title" class="location-title" name="Name" placeholder="Name" required>
+
+		<input type="text" id="location-path" class="location-path" name="Path" placeholder="Path" required>
+
+		<img id="location-create" src="/static/add.png" class="location-create" width="48" height="48">
+	</form>
 
 	<script src="/static/js/all.js"></script>
-	<script src="/static/js/index.js"></script>
+	<script src="/static/js/new_location.js"></script>
 
 </body>
 

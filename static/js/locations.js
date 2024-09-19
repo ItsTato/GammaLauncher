@@ -31,7 +31,7 @@ fetch("/api/locations", {
 				console.log("Revealed!");
 			});
 		}
-		locationElement.setAttribute("style", `margin-top: ${120 * (location.ID - 1)}px;`);
+		locationElement.setAttribute("style", `margin-top: ${112 * (location.ID - 1)}px;`);
 		Body.appendChild(locationElement);
 	});
 }).catch(error => {

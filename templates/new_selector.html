@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/css/all.css">
+	<link rel="stylesheet" href="/static/css/new_selector.css">
+	<link rel="shortcut icon" href="/static/favicon.ico">
+	<title>GL | Creating a new...</title>
+	<link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="body">
+
+	<div class="topbar">
+		<img id="home-button" src="/static/favicon.ico" class="topbar-icon" width="48" height="48">
+		<div id="games-button" class="topbar-games">Games</div>
+		<div id="locations-button" class="topbar-locations">Locations</div>
+		<div id="images-button" class="topbar-images">Images</div>
+		<div class="topbar-profile">
+			<img src="/images/profile_picture" class="topbar-profile-picture" width="48" height="48">
+			<p class="topbar-profile-username">{{username}}</p>
+		</div>
+		<img id="new-button" src="/static/add-secondary.png" class="topbar-add" width="48" height="48">
+	</div>
+
+	<p class="page-title">Create a new...</p>
+
+	<div class="location">
+		<p id="location-title" class="location-title">Location</p>
+		<p id="location-description" class="location-description">A location is where your game folders are stored.</p>
+		<img id="location-choose" src="/static/add.png" class="location-choose" width="48" height="48">
+	</div>
+
+	<div class="image">
+		<p id="image-title" class="image-title">Image</p>
+		<p id="image-description" class="image-description">Create (upload) an image to use as thumbnails and banners.</p>
+		<img id="image-choose" src="/static/add.png" class="image-choose" width="48" height="48">
+	</div>
+
+	<div class="game">
+		<p id="game-title" class="game-title">Game</p>
+		<p id="game-description" class="game-description">Add a game (or app) to launch via your Gamma Launcher instance.</p>
+		<img id="game-choose" src="/static/add.png" class="game-choose" width="48" height="48">
+	</div>
+
+	<script src="/static/js/all.js"></script>
+	<script src="/static/js/new_selector.js"></script>
+
+</body>
+
+</html>

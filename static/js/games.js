@@ -23,7 +23,7 @@ fetch("/api/games", {
 		gameElement.querySelector("#game-more").onclick = () => {
 			document.location.href = document.location.href + "/" + game.ID;
 		};
-		gameElement.setAttribute("style",`margin-top: ${120*(game.ID-1)}px;`);
+		gameElement.setAttribute("style",`margin-top: ${112*(game.ID-1)}px;`);
 		Body.appendChild(gameElement);
 	});
 }).catch(error => {

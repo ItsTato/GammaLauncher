@@ -1,0 +1,149 @@
+.location {
+	position: absolute;
+	top: 128px;
+	left: 50%;
+	width: 512px;
+	transform: translateX(-50%);
+	border-radius: 12px;
+	background-color: var(--background-tertiary);
+	height: 100px;
+}
+
+.location-title {
+	position: absolute;
+	top: -20px;
+	left: 12px;
+	font-size: 32px;
+	max-width: 424px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-primary);
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.location-description {
+	position: relative;
+	left: 12px;
+	top: 32px;
+	max-width: 424px;
+	max-height: 38px;
+	font-size: 16px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: left;
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--text-tertiary);
+}
+
+.location-choose {
+	position: absolute;
+	top: 42px;
+	right: 12px;
+}
+
+.location-choose:hover {
+	cursor: pointer;
+}
+
+.image {
+	position: absolute;
+	top: 232px;
+	left: 50%;
+	width: 512px;
+	transform: translateX(-50%);
+	border-radius: 12px;
+	background-color: var(--background-tertiary);
+	height: 100px;
+}
+
+.image-title {
+	position: absolute;
+	top: -20px;
+	left: 12px;
+	font-size: 32px;
+	max-width: 424px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-primary);
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.image-description {
+	position: relative;
+	left: 12px;
+	top: 32px;
+	max-width: 424px;
+	max-height: 38px;
+	font-size: 16px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: left;
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--text-tertiary);
+}
+
+.image-choose {
+	position: absolute;
+	top: 42px;
+	right: 12px;
+}
+
+.image-choose:hover {
+	cursor: pointer;
+}
+
+.game {
+	position: absolute;
+	top: 336px;
+	left: 50%;
+	width: 512px;
+	transform: translateX(-50%);
+	border-radius: 12px;
+	background-color: var(--background-tertiary);
+	height: 100px;
+}
+
+.game-title {
+	position: absolute;
+	top: -20px;
+	left: 12px;
+	font-size: 32px;
+	max-width: 424px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: center;
+	color: var(--text-primary);
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.game-description {
+	position: relative;
+	left: 12px;
+	top: 32px;
+	max-width: 424px;
+	max-height: 38px;
+	font-size: 16px;
+	font-family: 'Cascadia Code', monospace;
+	text-align: left;
+	white-space: wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: var(--text-tertiary);
+}
+
+.game-choose {
+	position: absolute;
+	top: 42px;
+	right: 12px;
+}
+
+.game-choose:hover {
+	cursor: pointer;
+}

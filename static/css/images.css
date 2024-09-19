@@ -1,0 +1,24 @@
+.invisible {
+	display: none;
+}
+
+.image {
+	position: absolute;
+	top: 128px;
+	left: 50%;
+	width: 512px;
+	transform: translateX(-50%);
+	border-radius: 12px;
+	background-color: var(--background-tertiary);
+	height: auto;
+}
+
+.image-holder {
+	top: 2px;
+	position: relative;
+	background-color: var(--background-secondary);
+	border-radius: 12px;
+	object-fit: cover;
+	object-position: bottom;
+	max-height: 512px;
+}
