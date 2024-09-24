@@ -6,7 +6,7 @@ The all-in-one game launcher perfect for managing your huge libraries of video g
 </div>
 
 ## Changelog
-### 1.1.1
+### v1.1.2
 
 ## Progress
 ### Index

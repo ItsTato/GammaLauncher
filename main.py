@@ -22,6 +22,57 @@ site:flask.Flask = flask.Flask(__name__)
 
 gameTracking:dict[int,subprocess.Popen] = {}
 
+@site.route("/api/games",methods=["GET"])
+def list_games():
+	games:list[Game] = database.getAllGames()
+	gamesList:list[dict[str,str|int|None|dict[str,int]]] = []
+	for game in games:
+		gamesList.append({
+			"ID": game.ID,
+			"Name": game.Name,
+			"ThumbnailID": game.ThumbnailID,
+			"BannerID": game.BannerID,
+			"ShortDescription": game.ShortDescription,
+			"LongDescription": game.LongDescription,
+			"LocationID": game.LocationID,
+			"ParentDirectory": game.ParentDirectory,
+			"LaunchType": game.LaunchType,
+			"GameLaunchFile": game.GameLaunchFile,
+			"LaunchArguments": game.LaunchArguments,
+			"LastPlayed": game.LastPlayed,
+			"MinutesOnRecord": game.MinutesOnRecord,
+			"GameType": game.GameType,
+			"Version": {
+				"Major": game.VersionMajor,
+				"Minor": game.VersionMinor,
+				"Revision": game.VersionRevision
+			}
+		})
+	return flask.make_response(dumps(gamesList),200)
+
+@site.route("/api/locations",methods=["GET"])
+def list_locations():
+	locations:list[Location] = database.getAllLocations()
+	locationsList:list[dict[str,str|int]] = []
+	for location in locations:
+		locationsList.append({
+			"ID": location.ID,#type:ignore
+			"Name": location.Name,
+			"Path": location.Path
+		})
+	return flask.make_response(dumps(locationsList),200)
+
+@site.route("/api/images",methods=["GET"])
+def list_images():
+	images:list[Image] = database.getAllImages()
+	imagesList:list[dict[str,int|str]] = []
+	for image in images:
+		imagesList.append({
+			"ID": image.ID,#type:ignore
+			"FileExtension": image.FileExtension
+		})
+	return flask.make_response(dumps(imagesList),200)
+
 @site.route("/",methods=["GET"])
 def index():
 	return flask.render_template("index.html",version=version,username=config["User"]["Username"])
@@ -105,57 +156,6 @@ def get_image(image_id:int):
 @site.route("/images/profile_picture",methods=["GET"])
 def get_profile_picture():
 	return flask.send_file(f"data/images/{config['User']['Profile Picture']}")
-
-@site.route("/api/games",methods=["GET"])
-def list_games():
-	games:list[Game] = database.getAllGames()
-	gamesList:list[dict[str,str|int|None|dict[str,int]]] = []
-	for game in games:
-		gamesList.append({
-			"ID": game.ID,
-			"Name": game.Name,
-			"ThumbnailID": game.ThumbnailID,
-			"BannerID": game.BannerID,
-			"ShortDescription": game.ShortDescription,
-			"LongDescription": game.LongDescription,
-			"LocationID": game.LocationID,
-			"ParentDirectory": game.ParentDirectory,
-			"LaunchType": game.LaunchType,
-			"GameLaunchFile": game.GameLaunchFile,
-			"LaunchArguments": game.LaunchArguments,
-			"LastPlayed": game.LastPlayed,
-			"MinutesOnRecord": game.MinutesOnRecord,
-			"GameType": game.GameType,
-			"Version": {
-				"Major": game.VersionMajor,
-				"Minor": game.VersionMinor,
-				"Revision": game.VersionRevision
-			}
-		})
-	return flask.make_response(dumps(gamesList),200)
-
-@site.route("/api/locations",methods=["GET"])
-def list_locations():
-	locations:list[Location] = database.getAllLocations()
-	locationsList:list[dict[str,str|int]] = []
-	for location in locations:
-		locationsList.append({
-			"ID": location.ID,#type:ignore
-			"Name": location.Name,
-			"Path": location.Path
-		})
-	return flask.make_response(dumps(locationsList),200)
-
-@site.route("/api/images",methods=["GET"])
-def list_images():
-	images:list[Image] = database.getAllImages()
-	imagesList:list[dict[str,int|str]] = []
-	for image in images:
-		imagesList.append({
-			"ID": image.ID,#type:ignore
-			"FileExtension": image.FileExtension
-		})
-	return flask.make_response(dumps(imagesList),200)
 
 @site.route("/games",methods=["GET"])
 def games():
