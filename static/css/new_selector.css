@@ -50,7 +50,7 @@
 
 .image {
 	position: absolute;
-	top: 232px;
+	top: 240px;
 	left: 50%;
 	width: 512px;
 	transform: translateX(-50%);
@@ -100,7 +100,7 @@
 
 .game {
 	position: absolute;
-	top: 336px;
+	top: 352px;
 	left: 50%;
 	width: 512px;
 	transform: translateX(-50%);
