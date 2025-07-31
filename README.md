@@ -1,3 +1,6 @@
+# Archival
+This repository has been migrated to https://git.tlet.xyz/Gamma/Launcher.
+
 # Gamma Launcher
 The all-in-one launcher perfect for managing your huge libraries of video games (& applications if you want to!).
 
